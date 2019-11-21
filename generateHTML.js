@@ -28,9 +28,7 @@ const colors = {
 };
 
 function generateHTML(colors, color, data) {
-  console.log(colors)
-  console.log(color)
-  console.log(data.data)
+ 
   return `<!DOCTYPE html>
 <html lang="en">
    <head>
@@ -170,6 +168,7 @@ function generateHTML(colors, color, data) {
          font-weight: bold;
          }
 
+         
          @media print { 
           body { 
             zoom: .75; 
@@ -181,7 +180,7 @@ function generateHTML(colors, color, data) {
       
       <body>
 
-    <p>${data.name}</p>
+    <p>${data.data.name}</p>
     <p></p>
     <p></p>
     
