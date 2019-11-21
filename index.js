@@ -24,10 +24,10 @@ inquirer
 
     ])
 
-    .then(({ username, color }) => {
+    .then(({ username, color}) => {
         console.log(color)
         api.getUser(username).then((data) => {
-
+            
             let html = generateHTML.generateHTML(generateHTML.colors, color, data)
             pdf.create(html, options).toFile("./gitprofile.pdf", (err, res) => {
                 if (err) {

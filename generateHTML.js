@@ -27,7 +27,7 @@ const colors = {
   }
 };
 
-function generateHTML(colors, color, data) {
+function generateHTML(colors, color, data, locationURL) {
  
   return `<!DOCTYPE html>
 <html lang="en">
@@ -38,153 +38,160 @@ function generateHTML(colors, color, data) {
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
       <link href="https://fonts.googleapis.com/css?family=BioRhyme|Cabin&display=swap" rel="stylesheet">
       <title>Document</title>
+      
+      
       <style>
-          @page {
-            margin: 0;
-          }
-         *,
-         *::after,
-         *::before {
-         box-sizing: border-box;
-         }
-         html, body {
-         padding: 0;
-         margin: 0;
-         }
-         html, body, .wrapper {
-         height: 100%;
-         }
-         .wrapper {
-         background-color: ${colors[color].wrapperBackground};
-         padding-top: 100px;
-         }
-         body {
-         background-color: white;
-         -webkit-print-color-adjust: exact !important;
-         font-family: 'Cabin', sans-serif;
-         }
-         main {
-         background-color: #E9EDEE;
-         height: auto;
-         padding-top: 30px;
-         }
-         h1, h2, h3, h4, h5, h6 {
-         font-family: 'BioRhyme', serif;
-         margin: 0;
-         }
-         h1 {
-         font-size: 3em;
-         }
-         h2 {
-         font-size: 2.5em;
-         }
-         h3 {
-         font-size: 2em;
-         }
-         h4 {
-         font-size: 1.5em;
-         }
-         h5 {
-         font-size: 1.3em;
-         }
-         h6 {
-         font-size: 1.2em;
-         }
-         .photo-header {
-         position: relative;
-         margin: 0 auto;
-         margin-bottom: -50px;
-         display: flex;
-         justify-content: center;
-         flex-wrap: wrap;
-         background-color: ${colors[color].headerBackground};
-         color: ${colors[color].headerColor};
-         padding: 10px;
-         width: 95%;
-         border-radius: 6px;
-         }
-         .photo-header img {
-         width: 250px;
-         height: 250px;
-         border-radius: 50%;
-         object-fit: cover;
-         margin-top: -75px;
-         border: 6px solid ${colors[color].photoBorderColor};
-         box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
-         }
-         .photo-header h1, .photo-header h2 {
-         width: 100%;
-         text-align: center;
-         }
-         .photo-header h1 {
-         margin-top: 10px;
-         }
-         .links-nav {
-         width: 100%;
-         text-align: center;
-         padding: 20px 0;
-         font-size: 1.1em;
-         }
-         .nav-link {
-         display: inline-block;
-         margin: 5px 10px;
-         }
-         .workExp-date {
-         font-style: italic;
-         font-size: .7em;
-         text-align: right;
-         margin-top: 10px;
-         }
-         .container {
-         padding: 50px;
-         padding-left: 100px;
-         padding-right: 100px;
-         }
 
-         .row {
-           display: flex;
-           flex-wrap: wrap;
-           justify-content: space-between;
-           margin-top: 20px;
-           margin-bottom: 20px;
-         }
+      @page {
+        margin: 0;
+    }
 
-         .card {
-           padding: 20px;
-           border-radius: 6px;
-           background-color: ${colors[color].headerBackground};
-           color: ${colors[color].headerColor};
-           margin: 20px;
-         }
-         
-         .col {
-         flex: 1;
-         text-align: center;
-         }
+    html,
+    body,
+        {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
 
-         a, a:hover {
-         text-decoration: none;
-         color: inherit;
-         font-weight: bold;
-         }
+    body {
+        background-color: #ffffff;
+        color: ${colors[color].fontShadow};
+        -webkit-print-color-adjust: exact !important;
+    }
 
-         
-         @media print { 
-          body { 
-            zoom: .75; 
-          } 
-         }
+    #header-background {
+        background-color: ${colors[color].headerBackground};
+        height: 350px;
+        margin: 0;
+    }
+
+    #footer-background {
+        background-color: ${colors[color].headerBackground};
+        height: 250px;
+        margin: 0;
+    }
+
+    #wrapper {
+        width: 90%;
+        background-color: ${colors[color].wrapperBackground};
+        margin: auto;
+        margin-top: -300px;
+        border-radius: 20px;
+        padding-bottom: 10px;
+    }
+
+    #profile-pic {
+        width: 250px;
+        height: 250px;
+        border: 7px solid;
+        border-color: ${colors[color].borderColor};
+        border-radius: 50%;
+        box-shadow: 3px 4px 20px ${colors[color].fontShadow};
+        margin: auto;
+        object-fit: cover;
+        position: relative;
+        top: -30px;
+    }
+
+    h1 {
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        font-weight: bolder;
+    }
+
+    h2,
+    h3 {
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+        font-weight: lighter;
+    }
+
+    #name {
+        font-size: 2.5em;
+        margin-top: 0;
+    }
+
+    .git-btn {
+        width: 300px;
+        display: inline-block;
+        padding: 20px;
+        background-color: ${colors[color].wrapperBackground};
+        margin: 0 10px 20px 10px;
+        border-radius: 20px;
+    }
+
+    #git-buttons {
+        margin-left: 67px;
+    }
+
+    .buttons {
+        margin: 5px auto;
+    }
+
+    #message {
+        padding: 20px;
+    }
+
+    a:link, a:visited {
+        color: ${colors[color].fontShadow};
+        text-decoration: none;
+    }
+
+    @media print { 
+        body { 
+            height: 3300px;
+            zoom: .7;
+        } 
+    }
+          
       </style>
       </head>
       
       
       <body>
 
-    <p>${data.data.name}</p>
-    <p></p>
-    <p></p>
-    
-    
+   
+    <div id="header-background"></div>
+        <div id="wrapper">
+            <h1><img id="profile-pic" src=${data.data.avatar_url} alt="profile-pic"></h1>
+            <h1 id="name">Hi! My name is ${data.data.name}</h1>
+            ${data.data.company != null ? `<h3>Currently @ ${data.data.company}</h3>` : ``}
+            <h2>
+            ${data.data.location != null ? `<a href="https://www.google.com/maps/search/?api=1&query=${locationURL}">
+            <i class="fas fa-map-marked-alt"><span>&nbsp;</span></i>${data.data.location}</a>
+            <span>&emsp;</span>` : ``}
+            <a href="${data.data.html_url}"><i class="fab fa-github"><span>&nbsp;</span></i>GitHub</a>
+            ${data.blog != "" ? `<span>&emsp;</span>
+            <a href="${data.data.blog}"><i class="fas fa-globe"><span>&nbsp;</span></i>Website</a>` : ``}
+            </h2>
+        </div>
+        <div id="message">
+            <h1>${data.bio != null ? `${data.data.bio}` : ``}</h1>        
+        </div>
+        <div id="git-buttons">
+            <div class="github-buttons">
+                <div class="git-btn" id="repos">
+                    <h2 class="buttons">Public Repositories</h2>
+                    <h2 class="buttons">${data.data.public_repos}</h2>
+                </div>
+                <div class="git-btn" id="stars">
+                    <h2 class="buttons">Github Stars</h2>
+                    <h2 class="buttons">${data.data.public_gists}</h2>
+                </div>
+            </div>
+            <div class="github-buttons">
+                <div class="git-btn" id="followers">
+                    <h2 class="buttons">Followers</h2>
+                    <h2 class="buttons">${data.data.followers}</h2>
+                </div>
+                <div class="git-btn" id="following">
+                    <h2 class="buttons">Following</h2>
+                    <h2 class="buttons">${data.data.following}</h2>
+                </div>
+            </div>
+        </div>
+        <div id="footer-background"></div>
 </body>
 </html>
       
@@ -197,5 +204,3 @@ module.exports = {
   colors: colors
 }
 
-
-        
